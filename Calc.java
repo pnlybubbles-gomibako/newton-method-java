@@ -1,53 +1,53 @@
 class Calc {
   // ベクトル同士の減算を計算する
-	public static double[] addVec(double x[], double y[]) {
-		int N = x.length;
-		double[] z = new double[N];
-		if (x.length != y.length) {
-			System.out.println("x.length!=y.length");
-			return z;
-		}
-		for (int i = 0; i < x.length; i++) {
-			z[i] = x[i] + y[i];
-		}
-		return z;
+  public static double[] addVec(double x[], double y[]) {
+    int N = x.length;
+    double[] z = new double[N];
+    if (x.length != y.length) {
+      System.out.println("x.length!=y.length");
+      return z;
+    }
+    for (int i = 0; i < x.length; i++) {
+      z[i] = x[i] + y[i];
+    }
+    return z;
   }
 
   // ベクトル同士の減算を計算する
-	public static double[] subVec(double x[], double y[]) {
-		int N = x.length;
-		double[] z = new double[N];
-		if (x.length != y.length) {
-			System.out.println("x.length!=y.length");
-			return z;
-		}
-		for (int i = 0; i < x.length; i++) {
-			z[i] = x[i] - y[i];
-		}
-		return z;
+  public static double[] subVec(double x[], double y[]) {
+    int N = x.length;
+    double[] z = new double[N];
+    if (x.length != y.length) {
+      System.out.println("x.length!=y.length");
+      return z;
+    }
+    for (int i = 0; i < x.length; i++) {
+      z[i] = x[i] - y[i];
+    }
+    return z;
   }
 
   // 行列Aとベクトルxの積を計算する
-	public static double[] matVec(double A[][], double x[]) {
-		double[] z = new double[A.length];
-		for (int i = 0; i < A.length; i++) {
-			for (int j = 0; j < A.length; j++) {
-				z[i] += A[i][j] * x[j];
-			}
-		}
-		return z;
+  public static double[] matVec(double A[][], double x[]) {
+    double[] z = new double[A.length];
+    for (int i = 0; i < A.length; i++) {
+      for (int j = 0; j < A.length; j++) {
+        z[i] += A[i][j] * x[j];
+      }
+    }
+    return z;
   }
 
   // ベクトルの∞ノルムを計算する
-	// 絶対値の中で一番値が大きいもの
-	public static double vecNormInf(double x[]) {
-		double z = 0;
-		for (int i = 0; i < x.length; i++) {
-			if (z < Math.abs(x[i])) {
-				z = Math.abs(x[i]);
-			}
-		}
-		return z;
+  // 絶対値の中で一番値が大きいもの
+  public static double vecNormInf(double x[]) {
+    double z = 0;
+    for (int i = 0; i < x.length; i++) {
+      if (z < Math.abs(x[i])) {
+        z = Math.abs(x[i]);
+      }
+    }
+    return z;
   }
 
   public static double[] copyVec(double[] vec) {
