@@ -2,20 +2,18 @@ class NewtonMethod2 {
   public static void newtonmethod(int n,double[] x0,double[] f,double[][] A,double epsilon,int Max){
     double[] x = new double[n];
     for(int i = 0; i < Max;i++){
-      // System.out.println("x0: ");
-      // Calc.printVec(x0);
       f = f(x0[0],x0[1],x0[2],x0[3],x0[4]);
       A = J(x0[0],x0[1],x0[2],x0[3],x0[4]);
-      // Calc.printMatWolfram(A);
-      // System.out.println("A: ");
-      // Calc.printMat(A);
-      A = Gauss.getA(Gauss.pivotForwardElimination(A, f)); //JとfについてPivotGaussをした後のJを取り出す
-      // Calc.printMatWolfram(A);
-      // System.out.println("A (pivot): ");
-      // Calc.printMat(A);
-      // System.out.println("A^-1: ");
-      // Calc.printMat(InverseMatrix.getInverseMatrix(A));
-      x = Calc.subVec(x0, Calc.matVec(InverseMatrix.getInverseMatrix(A), f)); //Aの逆関数(Jの逆関数)とfの内積
+
+      // J(x0) (x - x0) = -f(x0)
+      // の線形方程式をガウス消去法で解く
+
+      // -f(x0)
+      double[] b = Calc.subVec(new double[f.length], f);
+      // x_x0 = (x - x0)
+      double[] x_x0 = Gauss.reverseElimination(Gauss.pivotForwardElimination(A, b));
+      // x = x_x0 + x0
+      x = Calc.addVec(x_x0, x0);
       double[] xsub = Calc.subVec(x, x0); //xとx0の差分
       double xNorm = Calc.vecNormInf(xsub); //xsubの∞ノルム
       if ( xNorm < epsilon) {// 収束判定

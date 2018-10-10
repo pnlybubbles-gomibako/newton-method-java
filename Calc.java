@@ -1,5 +1,19 @@
 class Calc {
   // ベクトル同士の減算を計算する
+	public static double[] addVec(double x[], double y[]) {
+		int N = x.length;
+		double[] z = new double[N];
+		if (x.length != y.length) {
+			System.out.println("x.length!=y.length");
+			return z;
+		}
+		for (int i = 0; i < x.length; i++) {
+			z[i] = x[i] + y[i];
+		}
+		return z;
+  }
+
+  // ベクトル同士の減算を計算する
 	public static double[] subVec(double x[], double y[]) {
 		int N = x.length;
 		double[] z = new double[N];
